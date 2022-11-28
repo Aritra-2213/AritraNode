@@ -1,0 +1,50 @@
+<%-include('../Common/Header.ejs')%>
+<link rel="stylesheet" href="/CSS/style.css" />
+</head>
+<body>
+  <%-include('../Common/Navbar.ejs')%>
+  <div class="container">
+  <div class="prodForm row g-3">
+    <h1>Registration Form</h1>
+    <form class="row g-3" action="/addValue" method="POST" >
+      <%if(error_valid){%>
+         <%for(let ermsg of error_valid){%>
+             <p><%=ermsg.msg%></p>
+        <%}%>
+      <%}%>
+      <div class="col-md-6">
+        <label for="firstName4" class="form-label">First Name: </label>
+        <input type="text" class="form-control" id="firstName4" name="firstName"/>
+      </div>
+
+      <div class="col-md-6">
+        <label for="lastName4" class="form-label">Last Name: </label>
+        <input type="text" class="form-control" id="lastName4" name="lastName"/>
+      </div>
+
+      <div class="col-md-6">
+        <label for="email4" class="form-label">Email ID: </label>
+        <input type="email" class="form-control" id="email4" name="email"/>
+      </div>
+
+      <%if(errmsg){%>
+        <div class="regismessage"><%=errmsg%></div>
+      <%}%>
+
+      <div class="col-md-6">
+        <label for="password4" class="form-label">Password: </label>
+        <input type="password" class="form-control" id="password4" name="password"/>
+      </div>
+
+      <div class="col-md-6">
+        <label for="contact4" class="form-label">Contact: </label>
+        <input type="text" class="form-control" id="contact4" name="contact"/>
+      </div>
+
+      <div class="col-12">
+        <input type="submit" class="btn btn-primary" value="Submit data">
+      </div>
+    </form>
+  </div>
+</div>
+      

@@ -1,0 +1,44 @@
+<%-include('../Common/Header.ejs')%>
+<link rel="stylesheet" href="/CSS/style.css" />
+</head>
+<body>
+  <%-include('../Common/Navbar.ejs')%>
+  <div class="container">
+  <div class="prodForm row g-3">
+    <h1>Add Item Details: </h1>
+    <form class="row g-3" action="/postValue" method="POST" enctype="multipart/form-data">
+      
+      <div class="col-md-6">
+        <label for="inputTitle4" class="form-label">Item title: </label>
+        <input type="text" class="form-control" id="inputTitle4" name="itemTitle"/>
+      </div>
+
+      <div class="col-md-6">
+        <label for="inputCompany4" class="form-label">Company: </label>
+        <input type="text" class="form-control" id="inputCompany4" name="company"/>
+      </div>
+
+      <div class="col-md-6">
+        <label for="inputPrice4" class="form-label">Item price: </label>
+        <input type="text" class="form-control" id="inputPrice4" name="itemPrice"/>
+      </div>
+
+      <div class="col-md-6">
+        <label for="inputDescription4" class="form-label">Item description: </label>
+        <input type="text" class="form-control" id="inputDescription4" name="itemDesc"/>
+      </div>
+
+      <div class="col-md-6">
+        <label for="inputImage4" class="form-label">Item image: </label>
+        <input type="file" class="form-control" id="inputImage4" name="itemImage"/>
+      </div>
+
+      <div class="col-12">
+        <input type="submit" class="btn btn-primary" value="Submit data">
+      </div>
+    </form>
+  </div>
+  </div>
+
+  <%-include('../Common/Footer.ejs')%>
+

@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link <%= path === '/' ? 'active' : '' %>" aria-current="page" href="/">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <%= path === '/itemform' ? 'active' : '' %>" aria-current="page" href="/itemform">Add Items</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <%= path === '/displayitems' ? 'active' : '' %>" aria-current="page" href="/displayitems">Display As Admin</a>
+        </li>
+
+        <%if(!isAuthenticated){%>
+          <li class="nav-item">
+            <a class="nav-link <%= path === '/displayregis' ? 'active' : '' %>" aria-current="page" href="/displayregis">Registration Form</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link <%= path === '/displaylogin' ? 'active': '' %>" aria-current="page" href="/displaylogin">Login Form</a>
+          </li>
+        
+        <%}%>
+
+        <li class="nav-item">
+          <a class="nav-link <%= path === '/displayforget' ? 'active': '' %>" aria-current="page" href="/displayforget">Forgot Password</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <%= path === '/displayforget' ? 'active': '' %>" aria-current="page" href="/displaychangepass">Change Password</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <%= path === '/useritem' ? 'active' : '' %>" aria-current="page" href="/useritem">Display As User</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <%= path === '/addtocartPage' ? 'active' : '' %>" aria-current="page" href="/addtocartPage">Add To Cart</a>
+        </li>
+
+
+        <%if(isAuthenticated){%>  
+          <li class="nav-item">
+            <a class="nav-link <%= path === '/logout' ? 'active' : '' %>" aria-current="page" href="/logout">Log Out</a>
+          </li>
+        <%}%>
+        
+      </ul>
+    </div>
+  </div>
+</nav>

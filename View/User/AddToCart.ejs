@@ -1,0 +1,44 @@
+<%-include('../Common/Header.ejs')%>
+<link rel="stylesheet" href="/CSS/style.css" />
+</head>
+<body>
+  <%-include('../Common/Navbar.ejs')%>
+  <div class="container">
+    <h1>Welcome to the Cart Page</h1>
+    <table id="cart" class="table table-hover table-condensed">
+      <thead>
+        <tr>
+          <th style="width: 50%;">Item</th>
+          <th style="width: 10%;">Price</th>
+          <!-- <th style="width: 8%">Quantity</th> -->
+          <!-- <th style="width:22%" class="text-center">Subtotal</th> -->
+          <th style="width:10%">Operation</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%if(data.length>0){%>
+          <%for(let c of data){%>
+            <tr>
+              <td data-th="Item">
+                <div class="row">
+                  <div class="col-sm-2 hidden-xs"><img src="<%=c.cart[0].item_img%>" alt="Product Image" class="img-responsive" width="100"/></div>
+                  <div class="col-sm-10">
+                    <h4 class="nomargin"><%=c.cart[0].item_title%></h4>
+                    <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
+                  </div>
+                </div>
+              </td>
+              <td data-th="Price">Rs, <%=c.cart[0].item_price%></td>
+              <!-- <td data-th="Quantity">Rs, <%=c.cart[0].item_price%></td> -->
+              <td><a href="/deletecartitem/<%=c._id%>" class="btn btn-light">Delete</a></td>
+            </tr>
+          <%}%>
+        <%}else{%>
+            <tr><td colspan="3">No item in Cart</td></tr>
+          <%}%>
+      </tbody>
+
+    </table>
+  </div>
+  <%-include('../Common/Footer.ejs')%>

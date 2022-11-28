@@ -1,0 +1,36 @@
+<%-include('../Common/Header.ejs')%>
+<link rel="stylesheet" href="/CSS/style.css" />
+</head>
+<body>
+  <%-include('../Common/Navbar.ejs')%>
+    <%if(data){%>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card" style="width: 18rem">
+            <div class="card-body">
+              <h5 class="card-title"><%=data.item_title%></h5>
+              <h5 class="card-title"><%=data.company%></h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                <%=data.item_price%>
+              </h6>
+              <p class="card-text"><%=data.item_desc%></p>
+              <div class="addtocart">
+                <form action="/addToCart" method="POST">
+                  <input type="hidden" name="quantity" value="1">
+                  <input type="hidden" name="productId" value="<%=data._id%>">
+                  <input type="submit" value="Add To Cart" class="btn btn-lg btn-success btn-block">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%}else{%>
+    <div>
+      <h1>Data not found</h1>
+    </div>
+    <%}%>
+  </body>
+</html>

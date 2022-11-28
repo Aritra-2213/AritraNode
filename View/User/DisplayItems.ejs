@@ -1,0 +1,118 @@
+<%-include('../Common/Header.ejs')%>
+<link rel="stylesheet" href="/CSS/style.css" />
+</head>
+<body>
+  <%-include('../Common/Navbar.ejs')%>
+  <h3>All Items</h3>
+  <form action="/displayUserItem" method="POST" class="container">
+  <div class="mb-3">
+    <label for="exampleInputText1" class="form-label"></label>
+    <%let value='';
+    if(title){
+      value=title;
+    } %>
+      
+    <input type="text" class="form-control" id="exampleInputText1" name="itemtitle" value="<%=value%>">
+  </div>
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
+<div class="row">
+  <div class="col-1">
+    <div class="container">
+    <!-- <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Selecting Order
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/sortitem/1">Ascending</a></li>
+    <li><a class="dropdown-item" href="/sortitem/-1">Descending</a></li>
+  </ul>
+</div> -->
+<script>
+  function check(value){
+let str=`/sortitem/${value}`;
+if(document.querySelector('#exampleInputText1').value){
+  str+=`&${document.querySelector('#exampleInputText1').value}`;
+}
+window.location.href=str;
+  }
+</script>
+<div class="form-check">
+  <input class="form-check-input" type="radio" value="" id="flexCheck" name="hello" onchange="check(1)">
+  <label class="form-check-label" for="flexCheck">
+    Ascending
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" value="" id="flexCheck2" name="hello" onchange="check(-1)">
+  <label class="form-check-label" for="flexCheck2">
+    Descending
+  </label>
+</div>
+</div>
+  </div>
+<div class="col-11">
+  <%if(data.length>0){%>
+    <div class="container">
+      <div class="row">
+        <%for(let item of data){%>
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="../../<%=item.item_img%>" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+    <h5 class="card-title"><%=item.item_title%></h5>
+    <h5 class="card-title"><%=item.company%></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%=item.item_price%></h6>
+    <p class="card-text"><%=item.item_desc%></p>
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="document.querySelector('iframe').src='/useritem/<%=item._id%>'">
+  View Details
+ </button>
+  </div>
+    </div>
+  </div>
+</div>
+          </div>
+          <%}%>
+      </div>
+    </div>
+     <%}else{%>
+      <div>
+        <h1>Data not found</h1>
+      </div>
+      <%}%>
+      </div>
+</div>
+<script>
+  window.onload=(e)=>{
+    if(window.location.href.includes('http://localhost:1900/sortitem/1')){
+      document.querySelector('#flexCheck').checked=true;
+    }
+    else if(window.location.href.includes('http://localhost:1900/sortitem/-1')){
+      document.querySelector('#flexCheck2').checked=true;
+    }
+  }
+</script>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="ratio ratio-16x9">
+         <iframe></iframe>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <%-include('../Common/Footer.ejs')%>
+

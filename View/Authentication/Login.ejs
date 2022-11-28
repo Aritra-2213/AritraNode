@@ -1,0 +1,35 @@
+<%-include('../Common/Header.ejs')%>
+<link rel="stylesheet" href="/CSS/style.css" />
+</head>
+<body>
+  <%-include('../Common/Navbar.ejs')%>
+  <div class="container">
+  <div class="prodForm row g-3">
+    <h1>Login Form</h1>
+    <form class="row g-3" action="/addLoginValue" method="POST" >
+      
+      <div class="col-12">
+        <label for="emailidlogin4" class="form-label">Email ID: </label>
+        <input type="email" class="form-control" id="emailidlogin4" name="emailLogin"/>
+      </div>
+
+      <div class="col-12">
+        <label for="passwordLogin4" class="form-label">Password: </label>
+        <input type="password" class="form-control" id="passwordLogin4" name="passLogin"/>
+      </div>
+
+      <div class="forgotpass">
+        <a href="/displayforget"><button type="button">Forgot Password?</button></a>
+      </div>
+
+      <%if(errorMsg){%>
+        <div class="errorMessage"><%=errorMsg%></div>
+      <%}%>
+  
+      <div class="col-12">
+        <input type="submit" class="btn btn-primary" value="Login">
+      </div>
+    </form>
+  </div>
+</div>
+      

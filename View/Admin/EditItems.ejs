@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <%if(data){%>
+
+    <div class="container">
+      <div class="prodForm row g-3">
+        <h1>Edit Item Details:</h1>
+        <img src="../../<%=data.item_img%>" class="img-thumbnail" alt="..." />
+        <form
+          class="row g-3"
+          action="/editValue"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <div class="col-md-6">
+            <label for="inputTitle4" class="form-label">Item title: </label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputTitle4"
+              name="itemTitle"
+              value="<%=data.item_title%>"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="inputCompany4" class="form-label">Item title: </label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputCompany4"
+              name="company"
+              value="<%=data.company%>"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="inputPrice4" class="form-label">Item price: </label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputPrice4"
+              name="itemPrice"
+              value="<%=data.item_price%>"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="inputDescription4" class="form-label"
+              >Item description:
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputDescription4"
+              name="itemDesc"
+              value="<%=data.item_desc%>"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="inputImage4" class="form-label">Item title: </label>
+            <input
+              type="file"
+              class="form-control"
+              id="inputImage4"
+              name="itemImage"
+              value=""
+            />
+          </div>
+          <input type="hidden" name="itemId" value="<%=data._id%>" />
+          <input type="hidden" name="item_Image" value="<%=data.item_img%>" />
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary" onclick="clicky()">
+              Submit Data
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <%}else{%>
+    <div>
+      <h1>Data not found</h1>
+    </div>
+    <%}%>
+    <script>
+      function clicky() {
+        parent.document.querySelector(".modal-backdrop").remove();
+        parent.document.querySelector("#exampleModal").classList.remove("show");
+        parent.document.body.classList.remove("modal-open");
+        setTimeout(function () {
+          parent.location.href = "/displayitems";
+          parent.location.reload();
+        }, 20);
+      }
+    </script>
+  </body>
+</html>
